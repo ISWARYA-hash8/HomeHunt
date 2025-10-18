@@ -6,7 +6,6 @@ export default function PrivateRoute() {
         state.user
     });
 
-  return (
-    currentUser ?<Outlet/> : <Navigate to='/signin'/>;
-  )
+  return  currentUser ?<Outlet/> : <Navigate to='/signin'/>;
+  
 }
