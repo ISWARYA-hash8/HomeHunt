@@ -83,6 +83,10 @@ export default function SignUp() {
         <Link to="/signin">
           <span className="text-blue-600">Sign in</span>
         </Link>
+        <div className='text-center  my-4'>
+        <OAuth/>
+
+        </div>
       </div>
 
       {error && <p className="text-red-500 mt-5">{error}</p>}

@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  email: {                      // <— add this
+  email: {                     
     type: String,
     required: true,
     unique: true,
@@ -14,7 +14,11 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-  }
+  },
+  avata :{
+    type:String,
+    default : "https://cdn-icons-png.flaticon.com/512/9187/9187604.png"
+  },
 }, { timestamps: true });
 
 const User = mongoose.model('User', userSchema);
