@@ -1,6 +1,6 @@
 import User from "../models/user.model.js";
 import { errorHandler } from "../utils/error.js";
-
+import bcrypt from "bcryptjs";
 export const test = (req,res)=>{
     res.json({
         message : "api route is owrking"
@@ -32,4 +32,19 @@ export const test = (req,res)=>{
             catch(error){
                 next(error)
             }
+    }
+
+
+    export const deleteUser =async(req,res,next)=>{
+        if(req.user.id!==req.params.id) return next(errorHandler(401,'You can only delete your own account!'));
+        try{
+            await User.findByIdAndDelete(req.params.id);
+            console.log("del user hit");
+            return res.status(200).json({ 
+                success: true, 
+                message: "User has been deleted successfully" 
+              }).clearCookie('access_token');
+        }catch(error){
+            next(error);
+        }
     }
